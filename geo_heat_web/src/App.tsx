@@ -1,10 +1,11 @@
 import {
     ComposableMap,
     Geographies,
+    GeographiesProps,
     Geography,
     ZoomableGroup,
 } from "react-simple-maps";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import "./App.css";
 
 interface Position {
@@ -19,6 +20,10 @@ function App() {
         setPosition(position)
     }
 
+    const selectElement = (geo: any) => {
+        console.log("selected Element", geo);
+    }
+
     const geoUrl = "/geo-data.json";
 
     return (
@@ -30,9 +35,11 @@ function App() {
             >
                 <Geographies geography={geoUrl}>
                     {({ geographies }) =>
-                        geographies.map((geo) => (
-                            <Geography
+                        geographies.map((geo) => {
+                            // console.log("geo", geo.rms);
+                            return <Geography
                                 key={geo.rsmKey}
+                                onClick={() => selectElement(geo)}
                                 geography={geo}
                                 strokeWidth={0.5}
                                 stroke="#555555"
@@ -54,7 +61,7 @@ function App() {
                                 }}
                                 fill="#fff"
                             />
-                        ))
+                        })
                     }
                 </Geographies>
             </ZoomableGroup>
