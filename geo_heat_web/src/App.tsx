@@ -52,7 +52,7 @@ function App() {
                                         fill: "#888"
                                     }
                                 }}
-                                // fill={() => {console.log(geo.properties.exampleValuePerCapita); return 1;}}
+                                fill="#fff"
                             />
                         ))
                     }
