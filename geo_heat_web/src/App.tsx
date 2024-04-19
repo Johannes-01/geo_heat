@@ -17,6 +17,25 @@ function App() {
                         <Geography
                             key={geo.rsmKey}
                             geography={geo}
+                            strokeWidth={0.5}
+                            stroke="#555555"
+                            style={{
+                                default: {
+                                    outline: "none",
+                                    border: "10px solid red",
+                                },
+                                pressed: {
+                                    outline: "none", 
+                                    border: "10px solid red",
+                                    fill: "#0f0"
+                                },
+                                hover: {
+                                    outline: "none",
+                                    border: "10px solid red",
+                                    fill: "#888"
+                                }
+                            }}
+                            // fill={() => {console.log(geo.properties.exampleValuePerCapita); return 1;}}
                         />
                     ))
                 }
