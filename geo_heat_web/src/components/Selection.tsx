@@ -1,5 +1,6 @@
 import React from "react";
 import { useLayerContext } from "../context/LayerContext.tsx";
+import "./Selection.css";
 
 export const Selection = () => {
     const { layer, allLayers, setLayer } = useLayerContext();
@@ -32,8 +33,10 @@ export const Selection = () => {
             <button
                 key={layer}
                 onClick={() => {
+                    console.log("layer clicked");
                     setLayer(layer);
                     setSearchTerm(layer);
+                    setIsSearchFocused(false);
                 }}
                 aria-label={`Select ${layer}`}
                 style={{
@@ -48,33 +51,20 @@ export const Selection = () => {
     });
 
     return (
-        <div
-            style={{
-                position: "fixed",
-                top: "0",
-                left: "0",
-                width: "400px",
-                height: "100vh",
-                zIndex: "1",
-                backgroundColor: layer !== "" ? "white" : "transparent",
-                padding: "20px 16px",
-            }}
-        >
-            <div>
+        <div className={`selection_container ${layer ? "selection__visible" : ""}`}>
+            <div
+                style={{
+                    backgroundColor: isSearchFocused ? "white" : "",
+                    border: isSearchFocused ? "2px black solid" : "",
+                    borderRadius: "12px"
+                }}
+            >
                 <input
-                    style={{
-                        width: "100%",
-                        height: "40px",
-                        backgroundColor: "white",
-                        borderRadius: "100px",
-                        border: "1px solid black",
-                        color: "black",
-                        padding: "0 16px",
-                    }}
+                    className={`selection__search_bar`}
                     onChange={onInputChange}
                     value={searchTerm}
                     onFocus={() => setIsSearchFocused(true)}
-                    onBlur={() => setIsSearchFocused(false)}
+                    // onBlur={() => setIsSearchFocused(false)}
                 />
                 <div
                     style={{

@@ -1,0 +1,29 @@
+.selection_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100vh;
+    z-index: 1;
+    background-color: transparent;
+    padding: 20px 16px;
+}
+
+.selection__visible {
+    background-color: white;
+}
+
+.selection__search_bar {
+    width: calc(100% - 32px);
+    height: 40px;
+    background-color: white;
+    border-radius: 100px;
+    border: 2px solid black;
+    color: black;
+    padding: 0 16px;
+}
+
+.selection__search_bar:focus {
+    border: none;
+    outline: none;
+}
